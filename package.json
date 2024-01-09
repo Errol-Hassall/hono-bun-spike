@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build --target=bun ./src/index.ts --outdir ./build",
+    "start": "bun run build/index.js",
+    "build:start": "bun run build && bun run start"
+  },
+  "dependencies": {
+    "@prisma/client": "5.7.1",
+    "hono": "^3.12.0",
+    "prisma": "^5.7.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.0",
+    "@types/bun": "^1.0.0"
+  }
+}
