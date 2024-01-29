@@ -4,8 +4,22 @@ import profile from "./routes/profile";
 import { jwt } from "hono/jwt";
 import itineraries from "./routes/itineraries";
 import { showRoutes } from "hono/dev";
+import { cors } from 'hono/cors'
 
 const app = new Hono();
+
+// using cors I need to allow Access-Control-Allow-Origin for the origin localhost:5173
+app.use('*', cors({
+    origin: 'http://localhost:5173',
+    allowHeaders: ['Content-Type', 'Authorization'],
+    allowMethods: ['POST', 'GET', 'OPTIONS'],
+    exposeHeaders: ['Content-Length'],
+    maxAge: 600,
+    credentials: true,
+}))
+app.options('*', (c) => {
+    return c.text('', 204)
+})
 
 app.route("/auth", auth);
 
