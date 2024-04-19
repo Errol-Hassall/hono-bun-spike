@@ -21,6 +21,7 @@ app.options('*', (c) => {
     return c.text('', 204)
 })
 
+
 app.route("/auth", auth);
 
 app.use(
@@ -31,8 +32,6 @@ app.use(
 );
 
 app.route("/profile", profile);
-
-app.route("/itinerary", itineraries);
 
 showRoutes(app);
 

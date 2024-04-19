@@ -1,7 +1,9 @@
 version: '3'
 services:
   my_bun_app:
-    image: bun-spike
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:

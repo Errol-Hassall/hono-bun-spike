@@ -19,6 +19,13 @@ const loginSchema = z.object({
 
 const auth = new Hono();
 
+// @ts-ignore
+auth.get('/hello', async (c) => {
+  return c.json({
+    message: "hello"
+  })
+})
+
 auth.post(
   "/login",
   validator("json", (value, c) => {
@@ -37,8 +44,6 @@ auth.post(
 
     const user = await prisma.user.findUniqueOrThrow({ where: { email } });
 
-    console.log(email, password, user);
-
     if (!user) {
       return c.text("Invalid credentials", 401);
     }
@@ -48,15 +53,11 @@ auth.post(
       user.passwordHash
     );
 
-    console.log({passwordMatch})
-
     if (!passwordMatch) {
       return c.text("Invalid credentials", 401);
     }
 
     const jwt = await generateJWT(user as User);
-
-    console.log("THIS SHOULDN'T APPEAR");
 
     const { passwordHash, ...userWithoutPassword } = user;
 
