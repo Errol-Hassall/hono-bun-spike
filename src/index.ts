@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import auth from "./routes/auth";
 import profile from "./routes/profile";
 import { jwt } from "hono/jwt";
-import itineraries from "./routes/itineraries";
 import { showRoutes } from "hono/dev";
 import { cors } from 'hono/cors'
 
