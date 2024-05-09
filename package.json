@@ -3,12 +3,14 @@
     "dev": "bun run --hot src/index.ts",
     "build": "bun build --target=bun ./src/index.ts --outdir ./build",
     "start": "bun run build/index.js",
-    "build:start": "bun run build && bun run start"
+    "build:start": "bun run build && bun run start",
+    "test": "bun test"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.2.1",
     "@prisma/client": "5.7.1",
     "hono": "^3.12.0",
+    "minio": "^7.1.3",
     "prisma": "^5.7.1",
     "zod": "^3.22.4"
   },
