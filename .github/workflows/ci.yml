@@ -5,11 +5,15 @@ jobs:
   Build:
     runs-on: self-hosted
     steps:
-      - name: Install bun
-        run: curl -fsSL https://bun.sh/install | bash
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+
       - name: Install dependencies
         run: bun install
+
       - name: Build
         run: bun build
+
       - name: Test
         run: bun test
